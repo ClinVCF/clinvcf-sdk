@@ -1,0 +1,97 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clinvcf-sdk"
+version = "1.0.1"
+description = "Official SDK for building ClinVCF marketplace modules — types, contracts, helpers and tooling for clinical pharmacogenomics, prediction and annotation modules."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Fdevelopment LTD", email = "contact@fdevelopment.eu" }
+]
+maintainers = [
+    { name = "Fdevelopment LTD", email = "contact@fdevelopment.eu" }
+]
+keywords = [
+    "clinical-genomics",
+    "pharmacogenomics",
+    "vcf",
+    "variant-classification",
+    "acmg",
+    "cpic",
+    "clinvcf",
+    "marketplace-sdk",
+    "research-use-only",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Healthcare Industry",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+dependencies = [
+    "pydantic>=2.5.0",
+    "python-dateutil>=2.8.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.1.0",
+    "mypy>=1.6.0",
+    "build>=1.0.0",
+    "twine>=4.0.2",
+]
+
+[project.urls]
+Homepage = "https://www.fdevelopment.eu/clinVCF"
+Documentation = "https://www.fdevelopment.eu/clinVCF/sdk"
+Repository = "https://github.com/ClinVCF/clinvcf-sdk"
+"Bug Tracker" = "https://github.com/ClinVCF/clinvcf-sdk/issues"
+Changelog = "https://github.com/ClinVCF/clinvcf-sdk/blob/main/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+include = ["clinvcf_sdk*"]
+exclude = ["tests*", "docs*"]
+
+[tool.setuptools.package-data]
+clinvcf_sdk = ["py.typed"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q --strict-markers"
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "C4", "SIM"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
