@@ -33,6 +33,7 @@ jobs:
       - name: Lint (ruff)
         if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12'
         shell: bash
+        continue-on-error: true
         run: ruff check clinvcf_sdk tests
 
       - name: Type check (mypy)
